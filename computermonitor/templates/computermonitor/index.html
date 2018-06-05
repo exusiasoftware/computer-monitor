@@ -1,0 +1,79 @@
+{% extends "computermonitor/base.html" %} 
+{% load staticfiles %}
+{% block content %}
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      
+      function drawChart() {
+        var success = Number("{{ success_backup_count }}")
+        var number2 = Number("{{ failure_backup_count }}")
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Success',     success ],
+          ['Faiures',     number2]    
+        ]);
+
+        var options = {
+          title: 'Backup Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  
+
+
+<div class="container">
+  
+  <div class="row"> 
+      <div class="col-md-4"> 
+        <h3> Backup status:</h3>
+        <div class="card" id="piechart" style="width: 350px; height: 300px;"></div>
+      </div>
+     
+      <div class="col-md-3"> 
+          <h3> Computers </h3>
+          <div class="computer_count">
+          <table class="table-bordered" >
+              <tr> 
+                <td> <img src="{% static "computermonitor/images/apple.jpeg" %}" width="50">   </td>
+                <td>  {{  macintosh_computer_count  }}</td>
+            
+              </tr>
+              <tr > 
+                  <td> <img src="{% static "computermonitor/images/windows.jpeg" %}" width="50">   </td>
+                  <td> {{ windows_computer_count }} </td>
+                  
+              </tr>
+              <tr> 
+                  <td> <img src="{% static "computermonitor/images/linux.jpeg" %}" width="50">   </td>
+                  <td> {{ linux_computer_count }} </td>
+                  
+              </tr>    
+        
+          </table>
+        </div>
+  
+
+
+      </div>
+      
+   
+  
+   </div>   
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

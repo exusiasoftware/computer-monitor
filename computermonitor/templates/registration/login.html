@@ -1,0 +1,38 @@
+{% extends "computermonitor/base.html" %}
+{% load bootstrap3 %}
+
+
+{% block content %}
+<div class="container">
+  
+
+    <h2>Please Login</h2>
+    {% if forms.errors %}
+       <p>Your username and password sucks</p>
+    {% endif %}
+    <div class="row"> 
+       <div class="col-md-4"> 
+     {# Display a form #}
+    <form method="POST">
+          {% csrf_token %}
+          {% bootstrap_form form %}
+          <input type="submit" class='btn btn-default' value="Login">
+     
+
+    </form>
+    </div>
+    </div>
+</div>
+   
+
+
+
+
+
+
+
+
+</div>
+
+
+{% endblock %}

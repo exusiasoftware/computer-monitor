@@ -1,0 +1,59 @@
+{% extends "computermonitor/base.html" %} 
+{% load staticfiles %}
+{% block content %}
+
+<div class="container">
+
+     
+    <div class="col-md-6"> 
+        <div class="page-header">
+        <h2>Computers Backups</h2>
+        </div>
+        
+        <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Computer</th>
+                    <th>Backup status</th>
+                    <th>Backup time</th>
+                    <th>Input name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% comment %} computer.computer_number.name  {% endcomment %}
+                    {% for computer in computerbackup_list %}
+                    <tr>
+                      <td><a href="{% url 'computermonitor:computer_detail' pk=computer.computer_number.pk %}"> {{ computer.computer_number.name   }}</a></td>
+                      {% if computer.backup_status == 'failure'  %}
+                          <td style='color: red;'> {{ computer.backup_status|upper }} </td>
+                      
+                      {% else  %}
+                          <td style='color: green;'> {{ computer.backup_status|upper }} </td>
+                      {% endif %} 
+
+                      <td> {{ computer.backup_time }} </td>
+                      <td> {{ computer.input_name }} </td>
+                      
+                      {% if user.is_authenticated %}
+                        <td><a  href="{% url 'computermonitor:computerbackup_remove' pk=computer.pk %}" class="btn btn-danger">Delete </a></td>
+                      {% endif %}
+
+                    <tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+
+
+
+
+
+
+
+
+    </div>    
+   
+</div>
+
+{% endblock %}
+
+

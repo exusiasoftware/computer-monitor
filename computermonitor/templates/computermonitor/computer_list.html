@@ -1,0 +1,51 @@
+{% extends "computermonitor/base.html" %} 
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+
+     
+    <div class="col-md-6"> 
+        <div class="page-header">
+        <h2>Computers  </h2>
+     
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Platform</th>
+          <th>Computer Name</th>
+          <th>Computer User</th>
+          <th>Computer Model</th>
+        </tr>
+      </thead>
+      <tbody>
+
+          {% for computer in computer_list %}
+          <tr>
+             
+              {% if computer.platform == 2    %}
+                     <td> <img src="{% static "computermonitor/images/apple.jpeg" %}" width="30"> </td>
+              {%  endif  %}
+         
+              {% if computer.platform == 1    %}
+              <td> <img src="{% static "computermonitor/images/windows.jpeg" %}" width="30"> </td>
+              {%  endif  %}
+
+
+              {% if computer.platform == 3    %}
+              <td> <img src="{% static "computermonitor/images/linux.jpeg" %}" width="30"> </td>
+              {%  endif  %}
+
+
+            <td><a href="{% url 'computermonitor:computer_detail' pk=computer.pk %}"> {{ computer.name  }}</a></td>
+            <td> {{ computer.user }} </td>
+            <td> {{ computer.model }} </td>
+          <tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}
