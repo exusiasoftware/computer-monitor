@@ -5,6 +5,10 @@ from django.urls import reverse_lazy
 from . forms import ComputerForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
+from django.urls import reverse
+
+
+#from django.core.urlresolvers import reverse
 
 
 from . models import Computer,ComputerBackup
@@ -55,27 +59,32 @@ class ComputerUpdateView(LoginRequiredMixin,generic.UpdateView):
     redirect_field_name = 'computermonitor/computer_detail.html'
     form_class = ComputerForm
     model = Computer
-    success_url="/"
+    
+    def get_success_url(self):
+        return reverse('computermonitor:computer_detail', kwargs={'pk' : self.object.pk})
 
-   
+
    
 class CreateComputerView(LoginRequiredMixin,generic.CreateView):
      login_url = '/login/'
      redirect_field_name = 'computermonitor/computer_detail.html'
      form_class = ComputerForm
      model = Computer
-     success_url="/"
+
+     def get_success_url(self):
+        return reverse('computermonitor:computer_detail', kwargs={'pk' : self.object.pk}) 
+
     
 
 class ComputerDeleteView(LoginRequiredMixin,generic.DeleteView):
     model = Computer
-    #success_url = reverse_lazy('computer_list.html')
-    success_url="/computers/"
+    success_url = reverse_lazy('computermonitor:computer_list')
+
   
 
 class ComputerBackupDeleteView(LoginRequiredMixin,generic.DeleteView):
     model = ComputerBackup
-    success_url="/computerbackups/"
+    success_url = reverse_lazy('computermonitor:computer_backuplist')
 
   
 class ComputerBackupListView(generic.ListView):
