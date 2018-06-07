@@ -113,8 +113,8 @@
                 </thead>
                 <tbody>
             
-                
-                    {% for backups in computer.backups.all %}
+                <!-- computer_backup computer.backups.all -->
+                    {% for backups in computer_backup.all %}
                     <tr>
                         
                         {% if backups.backup_status == 'failure'  %}

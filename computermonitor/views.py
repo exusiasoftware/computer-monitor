@@ -6,11 +6,6 @@ from . forms import ComputerForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from django.urls import reverse
-
-
-#from django.core.urlresolvers import reverse
-
-
 from . models import Computer,ComputerBackup
 
 
@@ -34,24 +29,26 @@ class MainIndexView(generic.TemplateView):
         return context
   
 
-# Create your views here.
 class AboutView(generic.TemplateView):
     template_name = 'about.html'
 
 class ComputerListView(generic.ListView):
     model = Computer
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.order_by('name').all()
+        # pagination
+
 
 class ComputerDetailView(generic.DetailView):
     model = Computer
-
-    # def get_context_data(self,**kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     computer_backups = ComputerBackup.objects.order_by('backup_time').all()[:5]
-    #     context['computer_backups'] =  computer_backups
-    #     return context
-
-
+    
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        computer_backup = ComputerBackup.objects.filter(computer_number = self.object.pk).order_by('backup_status').all()[:10]
+        context['computer_backup'] =  computer_backup
+        return context
 
 
 class ComputerUpdateView(LoginRequiredMixin,generic.UpdateView):
@@ -75,13 +72,11 @@ class CreateComputerView(LoginRequiredMixin,generic.CreateView):
         return reverse('computermonitor:computer_detail', kwargs={'pk' : self.object.pk}) 
 
     
-
 class ComputerDeleteView(LoginRequiredMixin,generic.DeleteView):
     model = Computer
     success_url = reverse_lazy('computermonitor:computer_list')
 
   
-
 class ComputerBackupDeleteView(LoginRequiredMixin,generic.DeleteView):
     model = ComputerBackup
     success_url = reverse_lazy('computermonitor:computer_backuplist')
