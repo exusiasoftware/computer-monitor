@@ -17,6 +17,7 @@
           <th>Computer Name</th>
           <th>Computer User</th>
           <th>Computer Model</th>
+          <th>Backups </th>
         </tr>
       </thead>
       <tbody>
@@ -41,6 +42,9 @@
             <td><a href="{% url 'computermonitor:computer_detail' pk=computer.pk %}"> {{ computer.name  }}</a></td>
             <td> {{ computer.user }} </td>
             <td> {{ computer.model }} </td>
+            <td> {{ computer.backups.count }} </td>
+      
+         
           <tr>
           {% endfor %}
       </tbody>

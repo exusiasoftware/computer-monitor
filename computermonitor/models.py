@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from datetime import datetime
 from . choices import PLATFORM_CHOICES
 
 class Computer(models.Model):
@@ -22,6 +23,11 @@ class ComputerBackup(models.Model):
     backup_time = models.TextField()
     input_name =  models.TextField(default="none")
 
+    def datepublished(self):
+       #return datetime.strptime(self.backup_time, '%m/%d/%Y %H:%M:%S').date()
+       return datetime.strptime(self.backup_time, '%m/%d/%Y %H:%M:%S')
+    
+                             
     def __str__(self):
         return self.input_name
 

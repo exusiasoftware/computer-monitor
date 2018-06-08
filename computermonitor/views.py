@@ -84,3 +84,4 @@ class ComputerBackupDeleteView(LoginRequiredMixin,generic.DeleteView):
   
 class ComputerBackupListView(generic.ListView):
     model = ComputerBackup
+
