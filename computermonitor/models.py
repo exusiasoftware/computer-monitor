@@ -13,9 +13,15 @@ class Computer(models.Model):
     manufacturer_site = models.TextField(blank=True, null=True)
     platform = models.IntegerField(choices=PLATFORM_CHOICES, default=1)  
     create_date = models.DateTimeField(default=timezone.now)
+   
+    def lastBackupDate(self):
+        time_extract = ComputerBackup.objects.filter(computer_number = self.pk).latest()
+        return datetime.strptime(time_extract.backup_time, '%m/%d/%Y %H:%M:%S')
   
     def __str__(self):
         return self.name
+
+
 
 class ComputerBackup(models.Model):
     computer_number = models.ForeignKey(Computer,related_name='backups',on_delete=models.CASCADE)
@@ -23,11 +29,14 @@ class ComputerBackup(models.Model):
     backup_time = models.TextField()
     input_name =  models.TextField(default="none")
 
+    class Meta:
+       get_latest_by = "backup_time"
+
+
     def datepublished(self):
-       #return datetime.strptime(self.backup_time, '%m/%d/%Y %H:%M:%S').date()
-       return datetime.strptime(self.backup_time, '%m/%d/%Y %H:%M:%S')
+        return datetime.strptime(self.backup_time, '%m/%d/%Y %H:%M:%S')
     
-                             
+                      
     def __str__(self):
         return self.input_name
 

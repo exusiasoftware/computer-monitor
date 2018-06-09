@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from django.urls import reverse
 from . models import Computer,ComputerBackup
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 
@@ -84,4 +85,5 @@ class ComputerBackupDeleteView(LoginRequiredMixin,generic.DeleteView):
   
 class ComputerBackupListView(generic.ListView):
     model = ComputerBackup
+    paginate_by = 5
 
