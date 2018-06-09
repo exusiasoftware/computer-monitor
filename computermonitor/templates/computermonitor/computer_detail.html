@@ -83,11 +83,15 @@
                         <p class="card-text"><b> Create Date:</b>  {{ computer.create_date  }} </p>
                         <p class="card-text"><b> Serial Number:</b> {{ computer.serial_number }} </p>
                         <p class="card-text"><b> Manufacturer:</b> {{ computer.manufacturer }} </p>
-                        <p class="card-text"><b> Manufacturer Site: </b> <a href="http://{{computer.manufacturer_site }}"> {{computer.manufacturer_site }} </a> </p>
+                        <p class="card-text"><b> Manufacturer Site: </b> <a href="http://{{computer.manufacturer_site }}"> {{computer.manufacturer_site }} </a></p>
+                      
+                        <p class="card-text"><b> Schedule Backup: </b>{{ computer.get_schedule_backup_day_display  }}   {{  computer.schedule_backup_time  }} </p>
+                       
+                             
         
                 {% if user.is_authenticated %}
-                    <a href="{% url 'computermonitor:computer_edit' pk=computer.pk %}" class="btn btn-primary">Edit</a>
-                    <a  href="{% url 'computermonitor:computer_remove' pk=computer.pk %}" class="btn btn-danger">Delete </a>
+                    <a href="{% url 'computermonitor:computer_edit' pk=computer.pk %}" class="btn btn-primary btn-block">Edit</a>
+                    <a  href="{% url 'computermonitor:computer_remove' pk=computer.pk %}" class="btn btn-danger btn-block">Delete </a>
                 {% endif %}
             </div>
         </div>
@@ -96,12 +100,15 @@
      
             <div class="card" id="piechart" style="width: 400px; height: 300px;"></div>
            
-      </div>
+    </div>
  
  
 </div>
 <div class="row">
      <div  class="col-md-4">
+        
+
+        <div>
         <table class="table table-striped">
                 <thead>
                 <tr>

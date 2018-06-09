@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from datetime import datetime
-from . choices import PLATFORM_CHOICES
+from . choices import PLATFORM_CHOICES,BACKUPDAY_CHOICES
 
 class Computer(models.Model):
     name = models.TextField()
@@ -13,6 +13,8 @@ class Computer(models.Model):
     manufacturer_site = models.TextField(blank=True, null=True)
     platform = models.IntegerField(choices=PLATFORM_CHOICES, default=1)  
     create_date = models.DateTimeField(default=timezone.now)
+    schedule_backup_day = models.IntegerField(choices=BACKUPDAY_CHOICES, default=1) 
+    schedule_backup_time = models.TextField(blank=True, null=True)
    
     def lastBackupDate(self):
         time_extract = ComputerBackup.objects.filter(computer_number = self.pk).latest()

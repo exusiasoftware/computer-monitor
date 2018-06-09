@@ -35,6 +35,7 @@ class AboutView(generic.TemplateView):
 
 class ComputerListView(generic.ListView):
     model = Computer
+    paginate_by = 2
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -47,8 +48,10 @@ class ComputerDetailView(generic.DetailView):
     
     def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)
-        computer_backup = ComputerBackup.objects.filter(computer_number = self.object.pk).order_by('backup_status').all()[:10]
+    
+        computer_backup = ComputerBackup.objects.filter(computer_number = self.object.pk).order_by('backup_status').all()[:5]
         context['computer_backup'] =  computer_backup
+       
         return context
 
 
