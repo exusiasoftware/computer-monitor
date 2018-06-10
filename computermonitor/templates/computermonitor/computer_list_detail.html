@@ -5,7 +5,11 @@
 {% load staticfiles %}
 {% block content %}
 
-
+<script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
+</script>
 
 <!doctype html>
 <html>
@@ -17,9 +21,9 @@
     <div class="container">
          <div class="col-md-8"> 
             <div class="page-header">
-                    <h2>Computers Backups</h2>  
+                    <h2>Computers </h2>  
                     <div>
-                    <h3><a href="{% url 'computermonitor:computer_list'  %}"><span  class="glyphicon glyphicon-th-list"></span></a>
+                    <h3><a href="{% url 'computermonitor:computer_list'  %}" data-toggle="tooltip" title="Normal View"><span  class="glyphicon glyphicon-th-list"></span></a>
                     <a href="{% url 'computermonitor:computer_list'  %}"><span  class="glyphicon glyphicon-search"></span></a></h3>
                     </div>
             </div>

@@ -5,7 +5,11 @@
 {% block content %}
 
 
-
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+    });
+    </script>
 
 
 
@@ -16,7 +20,7 @@
         <div class="page-header">
         <h2>Computers  </h2>
            <div>
-            <h3> <a href="{% url 'computermonitor:computer_list_detail'  %}"><span  class="glyphicon glyphicon-list-alt"></span></a></h3>
+            <h3> <a href="{% url 'computermonitor:computer_list_detail'  %}" data-toggle="tooltip" title="Sort Fields"><span  class="glyphicon glyphicon-list-alt"></span></a></h3>
            </div>
         </div>
      
