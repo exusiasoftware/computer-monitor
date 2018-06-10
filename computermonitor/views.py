@@ -8,6 +8,8 @@ from django.views import generic
 from django.urls import reverse
 from . models import Computer,ComputerBackup
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from . tables import ComputerBackupTable, ComputerTable
+from django_tables2 import RequestConfig
 
 
 
@@ -90,3 +92,16 @@ class ComputerBackupListView(generic.ListView):
     model = ComputerBackup
     paginate_by = 5
 
+def computerbackupdetail(request):
+    table = ComputerBackupTable(ComputerBackup.objects.all())
+    RequestConfig(request).configure(table)
+    return render(request, 'computermonitor/backup_list_detail.html', {'table': table})
+
+
+def computerlistdetail(request):
+    table = ComputerTable(Computer.objects.all())
+    RequestConfig(request).configure(table)
+    return render(request, 'computermonitor/computer_list_detail.html', {'table': table})
+    
+    
+   

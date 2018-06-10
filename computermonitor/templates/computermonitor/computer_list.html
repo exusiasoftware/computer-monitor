@@ -4,20 +4,29 @@
 
 {% block content %}
 
+
+
+
+
+
 <div class="container">
 
      
     <div class="col-md-8"> 
         <div class="page-header">
         <h2>Computers  </h2>
+           <div>
+            <h3> <a href="{% url 'computermonitor:computer_list_detail'  %}"><span  class="glyphicon glyphicon-list-alt"></span></a></h3>
+           </div>
+        </div>
      
     <table class="table table-striped">
       <thead>
         <tr>
           <th>Platform</th>
-          <th>Computer Name</th>
-          <th>Computer User</th>
-          <th>Computer Model</th>
+          <th>Name</th>
+          <th>User</th>
+          <th>Model</th>
           <th>Last Backup </th>
           <th>Backups </th>
         </tr>

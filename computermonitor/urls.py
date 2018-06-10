@@ -15,7 +15,8 @@ urlpatterns = [
      path('computers/new/', views.CreateComputerView.as_view(), name='computer_new'),
      path('accounts/profile/',views.MainIndexView.as_view(), name='profile'),
      path('computerbackups/<int:pk>/remove/', views.ComputerBackupDeleteView.as_view(), name='computerbackup_remove'),
-   
+     path('computerbackups/detaillist/',views.computerbackupdetail,name='computer_backuplist_detail'),
+     path('computerbackups/computerlistdetail/',views.computerlistdetail,name='computer_list_detail'),
 
 
      

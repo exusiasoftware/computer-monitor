@@ -1,0 +1,38 @@
+{% extends "computermonitor/base.html" %} 
+
+{% load render_table from django_tables2 %}
+
+{% load staticfiles %}
+{% block content %}
+
+
+
+<!doctype html>
+<html>
+    <head>
+        <title>List of Computer Backups</title>
+       
+    </head>
+    <body>
+    <div class="container">
+         <div class="col-md-7"> 
+            <div class="page-header">
+                    <h2>Computers Backups</h2>  
+                    <div>
+                    <h3><a href="{% url 'computermonitor:computer_backuplist'  %}"><span  class="glyphicon glyphicon-th-list"></span></a>
+                    <a href="{% url 'computermonitor:computer_backuplist'  %}"><span  class="glyphicon glyphicon-trash"></span></a></h3>
+                    </div>
+            </div>
+                    
+            {% render_table table %}
+       </div>
+    </div>
+
+
+
+
+    </body>
+    
+</html>
+
+{% endblock %}
