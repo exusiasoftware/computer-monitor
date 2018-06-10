@@ -2,8 +2,14 @@
 {% load staticfiles %}
 {% block content %}
 
+
+ <!-- custom styles -->
+<link rel="stylesheet" href="{% static 'computermonitor/css/index.css' %}">
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
+    
+
+  <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
       
@@ -24,14 +30,17 @@
 
         chart.draw(data, options);
       }
-    </script>
+
+  
+
+  </script>
   
 
 
 <div class="container">
   
   <div class="row"> 
-      <div class="col-md-4"> 
+      <div class="col-md-4 backup_status_graph"> 
         <h3> Backup status:</h3>
         <div class="card" id="piechart" style="width: 350px; height: 300px;"></div>
       </div>
@@ -58,21 +67,89 @@
         
           </table>
         </div>
-  
-
-
       </div>
       
+   </div>  
    
   
-   </div>   
+    <div  class="col-md-8 card">
+          <div class="row backup_row"> 
+              <div  class="card">
+                    <div class="backup_title">
+                          <h4> Sunday </h4>
+                    </div>
+                    {% for sunday in schedule_backup_day_sunday %}
+                        <pre class="badge" > {{sunday.name}} {{ sunday.schedule_backup_time }} </pre> 
+                    {% endfor %} 
+                </div>
+          
+         
+              <div  class="card">
+                  <div class="backup_title">
+                        <h4> Monday </h4>
+                  </div>
+                  {% for monday in schedule_backup_day_monday %}
+                        <pre class="badge"> {{monday.name}} {{ monday.schedule_backup_time}} </pre> 
+                  {% endfor %} 
+              </div>    
+       
+              <div  class="card">
+                  <div class="backup_title">
+                      <h4> Tuesday </h4>
+                  </div>
+                  {% for tuesday in schedule_backup_day_tuesday %}
+                      <pre class="badge"> {{ tuesday.name}} {{ tuesday.schedule_backup_time }}</pre> 
+                  {% endfor %}
+              </div>    
+     
+            <div  class="card">
+                <div class="backup_title">
+                  <h4> Wednesday </h4>
+                </div>
+                {% for wednesday in schedule_backup_day_wednesday %}
+                    <pre class="badge"> {{ wednesday.name}} {{ wednesday.schedule_backup_time }}</pre>
+                {% endfor %}
+            </div> 
+          </div>
+  
+          <div class="row backup_row"> 
+              <div  class="card">
+                  <div class="backup_title">
+                      <h4> Thursday </h4>
+                  </div>
+                  {% for thursday in schedule_backup_day_thursday %}
+                       <pre class="badge"> {{ thursday.name}} {{ thursday.schedule_backup_time }}</pre>
+                  {% endfor %}
+              </div>    
+             
+              <div  class="card">
+                  <div class="backup_title">
+                  <h4> Friday </h4>
+                  </div>
+                  {% for friday in schedule_backup_day_friday %}
+                      <pre class="badge"> {{ friday.name}} {{ friday.schedule_backup_time }}</pre>
+                  {% endfor %}
+              </div>            
+                  
+              <div  class="card">
+                  <div class="backup_title">
+                  <h4> Saturday </h4>
+                </div>
+                {% for saturday in schedule_backup_day_saturday %}
+                    <pre class="badge"> {{ saturday.name}} {{ saturday.schedule_backup_time }}</pre>
+                {% endfor %}
+              </div>  
+         </div>   
+
+
+        
+    </div>  
+          
+
+  </div>
+
+
 </div>
-
-
-
-
-
-
 
 
 

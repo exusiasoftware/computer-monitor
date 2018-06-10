@@ -28,7 +28,13 @@ class MainIndexView(generic.TemplateView):
         context['windows_computer_count'] =  windows_computer_count
         context['macintosh_computer_count'] =  macintosh_computer_count
         context['linux_computer_count'] =  linux_computer_count
-      
+        context['schedule_backup_day_sunday'] = Computer.objects.filter(schedule_backup_day=1).all()
+        context['schedule_backup_day_monday'] = Computer.objects.filter(schedule_backup_day=2).all()
+        context['schedule_backup_day_tuesday'] = Computer.objects.filter(schedule_backup_day=3).all()
+        context['schedule_backup_day_wednesday'] = Computer.objects.filter(schedule_backup_day=4).all()
+        context['schedule_backup_day_thursday'] = Computer.objects.filter(schedule_backup_day=5).all()
+        context['schedule_backup_day_friday'] = Computer.objects.filter(schedule_backup_day=6).all()
+        context['schedule_backup_day_saturday'] = Computer.objects.filter(schedule_backup_day=7).all()
         return context
   
 

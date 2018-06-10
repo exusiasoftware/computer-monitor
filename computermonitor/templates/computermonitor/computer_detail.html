@@ -2,6 +2,12 @@
 {% load staticfiles %}
 {% block content %}
 
+
+ <!-- custom styles -->
+ <link rel="stylesheet" href="{% static 'computermonitor/css/computer_detail.css' %}">
+ <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
+
+
 <script>  
     var success_count = 0;
     var falure_count = 0;
@@ -53,6 +59,26 @@
 
         chart.draw(data, options);
       }
+
+    </script>
+
+
+
+    <script>
+            function displayAlert() {
+                var backupDeleteAlert = document.getElementById('delete_all_backups_alert');
+                backupDeleteAlert.style.display = 'block'; 
+            
+            }
+
+
+            function closeAlert() {
+            var backupDeleteAlert = document.getElementById('delete_all_backups_alert');
+            backupDeleteAlert.style.display = 'none'; 
+            
+        }
+
+
     </script>
   
 
@@ -105,14 +131,32 @@
  
 </div>
 
-<div class="row">
 
+
+
+
+
+
+<div class="row backups">
+      
      <div  class="col-md-4 card">
         <h2> Backups </h2>
         <div>
-                <h3><a href="{% url 'computermonitor:computer_backuplist'  %}"><span  class="glyphicon glyphicon-trash"></span></a></h3>
+            <h3><a onclick="displayAlert()" class="glyphicon glyphicon-trash"></a></h3>
         </div>
-        <div>
+
+        <div id="delete_all_backups_alert" class="alert alert-danger alert-dismissible fade in">
+                
+                 <p>This will remove all Backup logs from this computer.</p>
+                
+                <a  href="#" class="btn btn-danger btn-block">Delete </a>
+                <button onclick="closeAlert()" class="btn btn-danger btn-block" >Cancel</button>
+        </div>
+
+
+
+
+ 
         <table class="table table-hover">
                 <thead>
                 <tr>
@@ -124,7 +168,6 @@
                 </thead>
                 <tbody>
             
-                <!-- computer_backup computer.backups.all -->
                     {% for backups in computer_backup.all %}
                     <tr>
                         

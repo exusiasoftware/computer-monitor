@@ -1,0 +1,12 @@
+.backups {
+    padding: 20px 20px 20px; 
+
+}
+
+
+ #delete_all_backups_alert {
+
+    /* visibility: hidden; */
+    display: none; 
+
+} 

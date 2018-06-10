@@ -1,0 +1,25 @@
+.backup_title {
+    background-color:DodgerBlue;
+    width: 150px;
+}
+
+.backup_title h4 {
+    text-align: center;  
+    color:white;
+}
+
+.backup_row {
+    padding: 5px 50px 5px; 
+
+}
+
+
+.backup_status_graph {
+    padding: 0px 0px 20px; 
+
+}
+
+
+.backup_title:hover { 
+    background-color: darkblue;
+}

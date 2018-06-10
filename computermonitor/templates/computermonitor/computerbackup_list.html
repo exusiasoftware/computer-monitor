@@ -4,6 +4,14 @@
 {% block content %}
 
 
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+    });
+    </script>
+
+
+
 <div class="container">
 
      
@@ -11,7 +19,7 @@
         <div class="page-header">
         <h2>Computers Backups</h2>  
         <div>
-         <h3> <a href="{% url 'computermonitor:computer_backuplist_detail'  %}"><span  class="glyphicon glyphicon-list-alt"></span></a></h3>
+         <h3> <a href="{% url 'computermonitor:computer_backuplist_detail'  %}" data-toggle="tooltip" title="Sort Fields" ><span  class="glyphicon glyphicon-list-alt"></span></a></h3>
         </div>
         </div>
         
