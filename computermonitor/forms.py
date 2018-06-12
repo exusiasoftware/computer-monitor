@@ -4,7 +4,7 @@ from .models import Computer
 class ComputerForm(forms.ModelForm):
     class Meta():
       model = Computer
-      fields = ('name','user','model','model_type','platform','serial_number','manufacturer','manufacturer_site','schedule_backup_day','schedule_backup_time','create_date')
+      fields = ('name','user','model','model_type','platform','serial_number','manufacturer','manufacturer_site','schedule_backup_day','schedule_backup_time','schedule_backuptimes','create_date')
       
       widgets = {
 

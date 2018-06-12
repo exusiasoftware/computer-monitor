@@ -23,3 +23,28 @@
 .backup_title:hover { 
     background-color: darkblue;
 }
+
+
+.computer_backup_daily {
+
+    background-color: aquamarine;
+}
+
+.computer_backup_weekly {
+
+    background-color: burlywood;
+}
+
+
+
+.computer_backup_monthly {
+
+    background-color: lightgray;
+}
+
+
+
+.computer_backup_manual {
+
+    background-color: mediumpurple;
+}

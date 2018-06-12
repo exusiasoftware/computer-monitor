@@ -73,13 +73,63 @@
    
   
     <div  class="col-md-8 card">
+       
+             
+            <!-- <table>
+                    <tr>
+                      <td>Daily</td>
+                      <td style="background-color: aquamarine;" height=10 >1</td>
+                    </tr>
+                    <tr>
+                            <td>Weekly</td>
+                            <td style="background-color: burlywood;" height=10>1</td>
+                    </tr>
+                    <tr>
+                            <td>Monthly</td>
+                            <td style="background-color: lightgray;" height=10>1</td>
+                    </tr>
+                  
+                    <tr>
+                            <td>Manual</td>
+                            <td  style="background-color: mediumpurple;" height=10>1</td>
+                    </tr>
+         </table> -->
+
+     
+
+
+
+
           <div class="row backup_row"> 
               <div  class="card">
                     <div class="backup_title">
                           <h4> Sunday </h4>
                     </div>
                     {% for sunday in schedule_backup_day_sunday %}
-                        <pre class="badge" > {{sunday.name}} {{ sunday.schedule_backup_time }} </pre> 
+
+                       {% if sunday.schedule_backuptimes == 1  %}
+                              <a  href="{% url 'computermonitor:computer_detail' pk=sunday.pk %}" >
+                              <pre class="badge" style="background-color: aquamarine;" > {{sunday.name}} {{ sunday.schedule_backup_time }} </pre> </a>        
+                       {% endif %}
+
+                       {% if sunday.schedule_backuptimes == 2 %}
+                            <a href="{% url 'computermonitor:computer_detail' pk=sunday.pk %}">
+                            <pre class="badge" style="background-color: burlywood;"> {{sunday.name}} {{ sunday.schedule_backup_time }} </pre> </a>
+                      {% endif %}
+
+                      {% if sunday.schedule_backuptimes == 3 %}
+                            <a href="{% url 'computermonitor:computer_detail' pk=sunday.pk %}">
+                            <pre class="badge" style="background-color: lightgray;"> {{sunday.name}} {{ sunday.schedule_backup_time }} </pre> </a>
+                     {% endif %}
+
+
+                     {% if sunday.schedule_backuptimes == 4 %}
+                            <a href="{% url 'computermonitor:computer_detail' pk=sunday.pk %}">
+                            <pre class="badge" style="background-color: mediumpurple;"> {{sunday.name}} {{ sunday.schedule_backup_time }} </pre> </a>
+                    {% endif %}
+
+
+                     
                     {% endfor %} 
                 </div>
           
@@ -89,8 +139,29 @@
                         <h4> Monday </h4>
                   </div>
                   {% for monday in schedule_backup_day_monday %}
-                        <pre class="badge"> {{monday.name}} {{ monday.schedule_backup_time}} </pre> 
-                  {% endfor %} 
+                        {% if monday.schedule_backuptimes == 1  %}
+                            <a  href="{% url 'computermonitor:computer_detail' pk=monday.pk %}" >
+                            <pre class="badge" style="background-color: aquamarine;" > {{monday.name}} {{ monday.schedule_backup_time }} </pre> </a>        
+                        {% endif %}
+
+
+                        {% if monday.schedule_backuptimes == 2 %}
+                            <a href="{% url 'computermonitor:computer_detail' pk=monday.pk %}">
+                            <pre class="badge" style="background-color: burlywood;"> {{monday.name}} {{ monday.schedule_backup_time }} </pre> </a>
+                       {% endif %}
+
+                       {% if monday.schedule_backuptimes == 3 %}
+                            <a href="{% url 'computermonitor:computer_detail' pk=monday.pk %}">
+                            <pre class="badge" style="background-color: lightgray;"> {{monday.name}} {{ monday.schedule_backup_time }} </pre> </a>
+                      {% endif %}
+
+                      {% if monday.schedule_backuptimes == 4 %}
+                        <a href="{% url 'computermonitor:computer_detail' pk=monday.pk %}">
+                        <pre class="badge" style="background-color: mediumpurple;"> {{monday.name}} {{ monday.schedule_backup_time }} </pre> </a>
+                    {% endif %}
+
+                   {% endfor %}
+
               </div>    
        
               <div  class="card">
@@ -98,7 +169,27 @@
                       <h4> Tuesday </h4>
                   </div>
                   {% for tuesday in schedule_backup_day_tuesday %}
-                      <pre class="badge"> {{ tuesday.name}} {{ tuesday.schedule_backup_time }}</pre> 
+                    {% if tuesday.schedule_backuptimes == 1  %}
+                    <a  href="{% url 'computermonitor:computer_detail' pk=tuesday.pk %}" >
+                    <pre class="badge" style="background-color: aquamarine;" > {{tuesday.name}} {{ tuesday.schedule_backup_time }} </pre> </a>        
+                    {% endif %}
+
+
+                    {% if tuesday.schedule_backuptimes == 2 %}
+                        <a href="{% url 'computermonitor:computer_detail' pk=tuesday.pk %}">
+                        <pre class="badge" style="background-color: burlywood;"> {{tuesday.name}} {{ tuesday.schedule_backup_time }} </pre> </a>
+                    {% endif %}
+
+                    {% if tuesday.schedule_backuptimes == 3 %}
+                        <a href="{% url 'computermonitor:computer_detail' pk=tuesday.pk %}">
+                        <pre class="badge" style="background-color: lightgray;"> {{tuesday.name}} {{ tuesday.schedule_backup_time }} </pre> </a>
+                    {% endif %}
+
+                    {% if tuesday.schedule_backuptimes == 4 %}
+                    <a href="{% url 'computermonitor:computer_detail' pk=tuesday.pk %}">
+                    <pre class="badge" style="background-color: mediumpurple;"> {{tuesday.name}} {{ tuesday.schedule_backup_time }} </pre> </a>
+                    {% endif %}
+                   
                   {% endfor %}
               </div>    
      
@@ -107,7 +198,28 @@
                   <h4> Wednesday </h4>
                 </div>
                 {% for wednesday in schedule_backup_day_wednesday %}
-                    <pre class="badge"> {{ wednesday.name}} {{ wednesday.schedule_backup_time }}</pre>
+                   
+                    {% if wednesday.schedule_backuptimes == 1  %}
+                    <a  href="{% url 'computermonitor:computer_detail' pk=wednesday.pk %}" >
+                    <pre class="badge" style="background-color: aquamarine;" > {{wednesday.name}} {{ wednesday.schedule_backup_time }} </pre> </a>        
+                    {% endif %}
+
+
+                    {% if wednesday.schedule_backuptimes == 2 %}
+                        <a href="{% url 'computermonitor:computer_detail' pk=wednesday.pk %}">
+                        <pre class="badge" style="background-color: burlywood;"> {{wednesday.name}} {{ wednesday.schedule_backup_time }} </pre> </a>
+                    {% endif %}
+
+                    {% if wednesday.schedule_backuptimes == 3 %}
+                        <a href="{% url 'computermonitor:computer_detail' pk=wednesday.pk %}">
+                        <pre class="badge" style="background-color: lightgray;"> {{wednesday.name}} {{ wednesday.schedule_backup_time }} </pre> </a>
+                    {% endif %}
+
+                    {% if wednesday.schedule_backuptimes == 4 %}
+                    <a href="{% url 'computermonitor:computer_detail' pk=wednesday.pk %}">
+                    <pre class="badge" style="background-color: mediumpurple;"> {{wednesday.name}} {{ wednesday.schedule_backup_time }} </pre> </a>
+                    {% endif %}
+                
                 {% endfor %}
             </div> 
           </div>
@@ -118,7 +230,28 @@
                       <h4> Thursday </h4>
                   </div>
                   {% for thursday in schedule_backup_day_thursday %}
-                       <pre class="badge"> {{ thursday.name}} {{ thursday.schedule_backup_time }}</pre>
+
+                    {% if thursday.schedule_backuptimes == 1  %}
+                    <a  href="{% url 'computermonitor:computer_detail' pk=thursday.pk %}" >
+                    <pre class="badge" style="background-color: aquamarine;" > {{thursday.name}} {{ thursday.schedule_backup_time }} </pre> </a>        
+                    {% endif %}
+
+
+                    {% if thursday.schedule_backuptimes == 2 %}
+                        <a href="{% url 'computermonitor:computer_detail' pk=thursday.pk %}">
+                        <pre class="badge" style="background-color: burlywood;"> {{thursday.name}} {{ thursday.schedule_backup_time }} </pre> </a>
+                    {% endif %}
+
+                    {% if thursday.schedule_backuptimes == 3 %}
+                        <a href="{% url 'computermonitor:computer_detail' pk=thursday.pk %}">
+                        <pre class="badge" style="background-color: lightgray;"> {{thursday.name}} {{ thursday.schedule_backup_time }} </pre> </a>
+                    {% endif %}
+
+                    {% if thursday.schedule_backuptimes == 4 %}
+                    <a href="{% url 'computermonitor:computer_detail' pk=thursday.pk %}">
+                    <pre class="badge" style="background-color: mediumpurple;"> {{thursday.name}} {{ thursday.schedule_backup_time }} </pre> </a>
+                    {% endif %}
+
                   {% endfor %}
               </div>    
              
@@ -127,7 +260,28 @@
                   <h4> Friday </h4>
                   </div>
                   {% for friday in schedule_backup_day_friday %}
-                      <pre class="badge"> {{ friday.name}} {{ friday.schedule_backup_time }}</pre>
+
+                    {% if friday.schedule_backuptimes == 1  %}
+                    <a  href="{% url 'computermonitor:computer_detail' pk=friday.pk %}" >
+                    <pre class="badge" style="background-color: aquamarine;" > {{friday.name}} {{ friday.schedule_backup_time }} </pre> </a>        
+                    {% endif %}
+
+
+                    {% if friday.schedule_backuptimes == 2 %}
+                        <a href="{% url 'computermonitor:computer_detail' pk=friday.pk %}">
+                        <pre class="badge" style="background-color: burlywood;"> {{friday.name}} {{ friday.schedule_backup_time }} </pre> </a>
+                    {% endif %}
+
+                    {% if friday.schedule_backuptimes == 3 %}
+                        <a href="{% url 'computermonitor:computer_detail' pk=friday.pk %}">
+                        <pre class="badge" style="background-color: lightgray;"> {{friday.name}} {{ friday.schedule_backup_time }} </pre> </a>
+                    {% endif %}
+
+                    {% if friday.schedule_backuptimes == 4 %}
+                    <a href="{% url 'computermonitor:computer_detail' pk=friday.pk %}">
+                    <pre class="badge" style="background-color: mediumpurple;"> {{friday.name}} {{ friday.schedule_backup_time }} </pre> </a>
+                    {% endif %}
+
                   {% endfor %}
               </div>            
                   
@@ -136,7 +290,28 @@
                   <h4> Saturday </h4>
                 </div>
                 {% for saturday in schedule_backup_day_saturday %}
-                    <pre class="badge"> {{ saturday.name}} {{ saturday.schedule_backup_time }}</pre>
+
+                    {% if saturday.schedule_backuptimes == 1  %}
+                    <a  href="{% url 'computermonitor:computer_detail' pk=saturday.pk %}" >
+                    <pre class="badge" style="background-color: aquamarine;" > {{saturday.name}} {{ saturday.schedule_backup_time }} </pre> </a>        
+                    {% endif %}
+
+
+                    {% if saturday.schedule_backuptimes == 2 %}
+                        <a href="{% url 'computermonitor:computer_detail' pk=saturday.pk %}">
+                        <pre class="badge" style="background-color: burlywood;"> {{saturday.name}} {{ saturday.schedule_backup_time }} </pre> </a>
+                    {% endif %}
+
+                    {% if saturday.schedule_backuptimes == 3 %}
+                        <a href="{% url 'computermonitor:computer_detail' pk=saturday.pk %}">
+                        <pre class="badge" style="background-color: lightgray;"> {{saturday.name}} {{ saturday.schedule_backup_time }} </pre> </a>
+                    {% endif %}
+
+                    {% if saturday.schedule_backuptimes == 4 %}
+                    <a href="{% url 'computermonitor:computer_detail' pk=saturday.pk %}">
+                    <pre class="badge" style="background-color: mediumpurple;"> {{saturday.name}} {{ saturday.schedule_backup_time }} </pre> </a>
+                    {% endif %}
+
                 {% endfor %}
               </div>  
          </div>   
