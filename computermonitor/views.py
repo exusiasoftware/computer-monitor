@@ -13,6 +13,7 @@ from django_tables2 import RequestConfig
 
 
 
+
 class MainIndexView(generic.TemplateView):
    template_name = 'computermonitor/index.html' 
    
@@ -61,8 +62,9 @@ class ComputerDetailView(generic.DetailView):
     def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)
     
-        computer_backup = ComputerBackup.objects.filter(computer_number = self.object.pk).order_by('backup_status').all()[:5]
+        computer_backup = ComputerBackup.objects.filter(computer_number = self.object.pk).order_by('-backup_time').all()[:5]
         context['computer_backup'] =  computer_backup
+        context['computer_id'] =  self.object.pk
        
         return context
 
@@ -100,7 +102,14 @@ class ComputerBackupDeleteView(LoginRequiredMixin,generic.DeleteView):
   
 class ComputerBackupListView(generic.ListView):
     model = ComputerBackup
-    paginate_by = 5
+    paginate_by = 15
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.order_by('-backup_time').all()
+
+
+
 
 def computerbackupdetail(request):
     table = ComputerBackupTable(ComputerBackup.objects.all())
@@ -114,4 +123,14 @@ def computerlistdetail(request):
     return render(request, 'computermonitor/computer_list_detail.html', {'table': table})
     
     
-   
+def removeComputerBackups(request,pk):  
+    ComputerBackup.objects.filter(computer_number=pk).delete()
+    return redirect("computermonitor:computer_detail", pk)
+  
+  
+
+ 
+    
+  
+    
+

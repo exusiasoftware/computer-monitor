@@ -149,7 +149,7 @@
                 
                  <p>This will remove all Backup logs from this computer.</p>
                 
-                <a  href="#" class="btn btn-danger btn-block">Delete </a>
+                <a  href="{% url 'computermonitor:computerbackup_remove_all' pk=computer_id %}" class="btn btn-danger btn-block">Delete </a>
                 <button onclick="closeAlert()" class="btn btn-danger btn-block" >Cancel</button>
         </div>
 
