@@ -111,8 +111,10 @@
                         <p class="card-text"><b> Manufacturer:</b> {{ computer.manufacturer }} </p>
                         <p class="card-text"><b> Manufacturer Site: </b> <a href="http://{{computer.manufacturer_site }}"> {{computer.manufacturer_site }} </a></p>
                       
-                        <p class="card-text"><b> Schedule Backup: </b>{{ computer.get_schedule_backup_day_display  }}   {{  computer.schedule_backup_time  }} </p>
-                       
+                        <p class="card-text"><b> Schedule Backup: </b>{{ computer.get_schedule_backup_day_display  }}  
+                            
+                            {{  computer.schedule_backup_time  }} {{  computer.get_schedule_backuptimes_display }} </p>
+                          
                              
         
                 {% if user.is_authenticated %}
@@ -142,7 +144,12 @@
      <div  class="col-md-4 card">
         <h2> Backups </h2>
         <div>
-            <h3><a onclick="displayAlert()" class="glyphicon glyphicon-trash"></a></h3>
+            {% if computer_backup.count == 0 %}
+               <h3><a class="glyphicon glyphicon-trash" style="opacity: 0.3"></a></h3>
+            {% else %}   
+              <h3><a onclick="displayAlert()" class="glyphicon glyphicon-trash"></a></h3>
+            {% endif %}
+
         </div>
 
         <div id="delete_all_backups_alert" class="alert alert-danger alert-dismissible fade in">

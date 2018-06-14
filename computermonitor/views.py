@@ -109,8 +109,6 @@ class ComputerBackupListView(generic.ListView):
         return queryset.order_by('-backup_time').all()
 
 
-
-
 def computerbackupdetail(request):
     table = ComputerBackupTable(ComputerBackup.objects.all())
     RequestConfig(request).configure(table)

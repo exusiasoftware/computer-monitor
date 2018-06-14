@@ -5,11 +5,37 @@
 {% load staticfiles %}
 {% block content %}
 
+
+ <!-- custom styles -->
+ <link rel="stylesheet" href="{% static 'computermonitor/css/backup_list_detail.css' %}">
+
+
 <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();   
         });
         </script>
+
+    <script>
+            function displayAlert() {
+                var backupDeleteAlert = document.getElementById('delete_all_backups_alert');
+                backupDeleteAlert.style.display = 'block'; 
+            
+            }
+
+
+            function closeAlert() {
+            var backupDeleteAlert = document.getElementById('delete_all_backups_alert');
+            backupDeleteAlert.style.display = 'none'; 
+            
+        }
+
+
+    </script>
+
+
+
+
 
 
 
@@ -19,8 +45,16 @@
                     <h2>Computers Backups</h2>  
                     <div>
                     <h3><a href="{% url 'computermonitor:computer_backuplist'  %}" data-toggle="tooltip" title="Normal View"  ><span  class="glyphicon glyphicon-th-list"></span></a>
-                    <a href="{% url 'computermonitor:computer_backuplist'  %}"><span  class="glyphicon glyphicon-trash"></span></a></h3>
+                       <a onclick="displayAlert()"><span  class="glyphicon glyphicon-trash"></span></a></h3>
                     </div>
+                    
+                    <div id="delete_all_backups_alert" class="alert alert-danger alert-dismissible fade in">
+                
+                            <p>This will remove all Backup logs.</p>
+                           
+                           <a  href="" class="btn btn-danger btn-block">Delete </a>
+                           <button onclick="closeAlert()" class="btn btn-danger btn-block" >Cancel</button>
+                   </div>
             </div>
                     
             {% render_table table %}
