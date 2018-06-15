@@ -38,10 +38,7 @@ class MainIndexView(generic.TemplateView):
         context['schedule_backup_day_saturday'] = Computer.objects.filter(schedule_backup_day=7).all() | Computer.objects.filter(schedule_backuptimes=1).all()
         return context
 
-        
-        
-
-  
+    
 
 class AboutView(generic.TemplateView):
     template_name = 'about.html'
@@ -125,7 +122,9 @@ def removeComputerBackups(request,pk):
     ComputerBackup.objects.filter(computer_number=pk).delete()
     return redirect("computermonitor:computer_detail", pk)
   
-  
+def removeAllBackups(request):  
+    ComputerBackup.objects.all().delete()
+    return redirect("computermonitor:computer_backuplist_detail")  
 
  
     

@@ -18,7 +18,6 @@ urlpatterns = [
      path('computerbackups/detaillist/',views.computerbackupdetail,name='computer_backuplist_detail'),
      path('computerbackups/computerlistdetail/',views.computerlistdetail,name='computer_list_detail'),
      path('computerbackups/<int:pk>/removeall/', views.removeComputerBackups, name='computerbackup_remove_all'),
-    
+     path('computerbackups/removeall/', views.removeAllBackups, name='remove_all_computerbackups'),
 
-     
 ]
