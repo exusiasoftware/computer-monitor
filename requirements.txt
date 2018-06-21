@@ -1,6 +1,4 @@
 django
 django-bootstrap3
 django-tables2
-uwsgi
-
-
+mod_wsgi
