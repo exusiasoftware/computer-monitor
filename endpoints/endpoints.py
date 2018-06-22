@@ -2,10 +2,10 @@ from flask import Flask
 from flask_restful import  Api
 from computer import Computer, ComputerList
 
+# uwsgi --socket 0.0.0.0:8000 --protocol=http -w wsgi
 
-
-app = Flask(__name__)
-api = Api(app)
+application = Flask(__name__)
+api = Api(application)
 
 
 

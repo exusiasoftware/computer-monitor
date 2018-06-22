@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ei%cz*jcc60u&r8p0-6xhk1wha^u__7=4ach5177$sbxdo1qjv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['10.123.47.104','localhost','10.123.47.47']
+ALLOWED_HOSTS = ['10.123.47.104','localhost','10.123.47.47','osxsrv.d2v.com',]
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'django.contrib.humanize',
     'django_tables2',
+    'mod_wsgi.server',
 ]
 
 MIDDLEWARE = [
@@ -124,4 +125,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, STATIC_URL)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
